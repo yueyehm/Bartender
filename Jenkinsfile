@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    configure {
-        lightweight(true)
-    }
-
     stages {
         stage('Build') {
             steps {
