@@ -1,8 +1,9 @@
-timestamp{
-    pipeline {
-        agent any
 
-        stages {
+pipeline {
+    agent any
+
+    stages {
+        timestamp{
             stage('Build') {
                 steps {
                     echo 'Building..'
@@ -23,5 +24,6 @@ timestamp{
         }
     }
 }
+
 
 
