@@ -24,6 +24,7 @@ def prepareEnv() {
     echo sh(script: 'env|sort', returnStdout: true)
     env.media_sdk3_branch = ""
     env.media_sdk3_private_branch = ""
+    sh ("git pull")
     sh ("git log -1")
     // result = sh (script: "git log -1 | grep 'need investigate'", returnStatus: true) 
     echo result
