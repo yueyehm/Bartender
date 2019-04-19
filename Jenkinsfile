@@ -47,5 +47,3 @@ def prepareEnv() {
     result = sh (script: "git log -1 | grep 'need investigate'", returnStatus: true) 
     echo result
 }
-
-
