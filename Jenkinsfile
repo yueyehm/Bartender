@@ -1,30 +1,20 @@
 
-pipeline {
-    agent any
-    options { timestamps () }
-    stages {
-        stage('Build') {
-            node("Mac"){
-                    steps {
-                    echo 'Building..'
-                    echo env.BRANCH_NAME
-                    echo sh(script: 'env|sort', returnStdout: true)
-                    prepareEnv()
-                }
-            }
-            
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+timestamps {
+    node("Mac"){
+        prepareEnv()
     }
+    
+    parallel WinBuild: {
+        stage('Test on windows') {
+            echo "test"
+            echo env.BRANCH_NAME
+        }
+    }, MacBuild: {
+        stage('Test on Mac'){
+            echo "test"
+        }
+    },
+    failFast: true|false
 }
 
 
