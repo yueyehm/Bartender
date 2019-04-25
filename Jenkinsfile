@@ -21,7 +21,6 @@ timestamps {
 def prepareEnv() {
     echo env.BRANCH_NAME
     echo env.GIT_URL
-    echo sh(script: 'env|sort', returnStdout: true)
     env.media_sdk3_branch = ""
     env.media_sdk3_private_branch = ""
     // result = sh (script: "git log -1 | grep 'need investigate'", returnStatus: true) 
