@@ -1,6 +1,6 @@
 
 timestamps {
-    node("Mac"){
+    node("windows"){
         prepareEnv()
     }
     
@@ -14,7 +14,7 @@ timestamps {
             echo "test"
         }
     },
-    failFast: true|false
+    failFast: true
 }
 
 
