@@ -23,6 +23,4 @@ def prepareEnv() {
     echo env.GIT_URL
     env.media_sdk3_branch = ""
     env.media_sdk3_private_branch = ""
-    // result = sh (script: "git log -1 | grep 'need investigate'", returnStatus: true) 
-    echo result
 }
