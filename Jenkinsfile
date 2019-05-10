@@ -8,6 +8,7 @@ timestamps {
         stage('Test on windows') {
             echo "test"
             echo env.BRANCH_NAME
+            echo "yes this"
         }
     }, MacBuild: {
         stage('Test on Mac'){
