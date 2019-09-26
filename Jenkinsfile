@@ -21,6 +21,7 @@ timestamps {
 
 def prepareEnv() {
     echo sh(script: 'env|sort', returnStdout: true)
+    echo "new branch"
     echo env.BRANCH_NAME
     echo env.GIT_URL
     env.media_sdk3_branch = ""
