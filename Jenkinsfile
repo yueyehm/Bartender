@@ -1,23 +1,27 @@
-pipeline {
-    agent any
 
-    stages {
-        stage('Build') {
-            steps {
-                echo "building"
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                exit 1
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+timestamps {
+    node("windows"){
+        prepareEnv()
     }
+    
+    parallel WinBuild: {
+        stage('Test on windows') {
+            echo "test"
+            echo env.BRANCH_NAME
+            echo "yes this"
+        }
+    }, MacBuild: {
+        stage('Test on Mac'){
+            echo "test"
+        }
+    },
+    failFast: true
+}
+
+
+def prepareEnv() {
+    echo env.BRANCH_NAME
+    echo env.GIT_URL
+    env.media_sdk3_branch = ""
+    env.media_sdk3_private_branch = ""
 }
